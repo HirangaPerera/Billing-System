@@ -44,5 +44,11 @@ public String getCompanyAddress() {
 public void setCompanyAddress(String companyAddress) {
 	CompanyAddress = companyAddress;
 }
+@Override
+public String toString() {
+	return "SupplierTable [SupplierID=" + SupplierID + ", SuppliarName=" + SuppliarName + ", CompanyName=" + CompanyName
+			+ ", ContactNumber=" + ContactNumber + ", CompanyAddress=" + CompanyAddress + "]";
+}
+
 
 }

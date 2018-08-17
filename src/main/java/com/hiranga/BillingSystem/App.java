@@ -16,11 +16,11 @@ public class App
     {
    
     	SupplierTable obj = new SupplierTable();
-    	obj.setSupplierID("CP01");
-    	obj.setSuppliarName("Kavishka Girandurukotte");
-    	obj.setContactNumber("0719628698");
-    	obj.setCompanyName("Hydra");
-    	obj.setCompanyAddress("Hydra.Org");
+    	obj.setSupplierID("CP03");
+    	obj.setSuppliarName("Malith Girandurukotte");
+    	obj.setContactNumber("0719628436");
+    	obj.setCompanyName("dragon");
+    	obj.setCompanyAddress("dragon.Org");
     	Configuration con = new Configuration().configure().addAnnotatedClass(SupplierTable.class);
         ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
         SessionFactory sf = con.buildSessionFactory(reg);
