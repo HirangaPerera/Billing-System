@@ -1,8 +1,12 @@
 package com.hiranga.productDetails;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
 
 import com.hiranga.BillingSystem.SupplierTable;
 
@@ -14,8 +18,8 @@ private String Product;
 private String Amount;
 private String Meisure;
 private String OtherDetails;
-@OneToOne
-private SupplierTable suppliertable;
+@OneToMany
+private List<SupplierTable> suppliertable = new ArrayList<SupplierTable>();
 
 public String getProductId() {
 	return ProductId;
@@ -47,11 +51,13 @@ public String getOtherDetails() {
 public void setOtherDetails(String otherDetails) {
 	OtherDetails = otherDetails;
 }
-public SupplierTable getSuppliertable() {
+public List<SupplierTable> getSuppliertable() {
 	return suppliertable;
 }
-public void setSuppliertable(SupplierTable suppliertable) {
+public void setSuppliertable(List<SupplierTable> suppliertable) {
 	this.suppliertable = suppliertable;
 }
+
+
 
 }

@@ -16,29 +16,44 @@ public class App
 {
     public static void main( String[] args )
     {
-   
-    	SupplierTable st = new SupplierTable();
-    	st.setSupplierID("CS03");
-    	st.setSuppliarName("Harsha Walisinghe");
-    	st.setContactNumber("0719628698");
-    	st.setCompanyName("proling");
-    	st.setCompanyAddress("prolink.Org");
+   try {
     	
-    	ProductTable pt = new ProductTable();
-    	pt.setProductId("CP03");
-    	pt.setProduct("Sugar");
-    	pt.setAmount("10");
-    	pt.setMeisure("kg");
-    	pt.setOtherDetails("red Dhal");
-    	pt.setSuppliertable(st);
     	Configuration con = new Configuration().configure().addAnnotatedClass(SupplierTable.class).addAnnotatedClass(ProductTable.class);
         ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
         SessionFactory sf = con.buildSessionFactory(reg);
         Session ssn = sf.openSession();
         Transaction tr =  ssn.beginTransaction();
         
+        SupplierTable st = new SupplierTable();
+    	st.setSupplierID("CS05");
+    	st.setSuppliarName("Harshan Walisinghe");
+    	st.setContactNumber("0719624398");
+    	st.setCompanyName("kashyapa");
+    	st.setCompanyAddress("kashyapa.Org");
+    	
+    	ProductTable pt = new ProductTable();
+    	pt.setProductId("CP05");
+    	pt.setProduct("Watana");
+    	pt.setAmount("10");
+    	pt.setMeisure("kg");
+    	pt.setOtherDetails("red dhal");
+    	pt.getSuppliertable().add(st);
+    	
+    	ProductTable ptone = new ProductTable();
+    	ptone.setProductId("CP06");
+    	ptone.setProduct("Watana");
+    	ptone.setAmount("10");
+    	ptone.setMeisure("kg");
+    	ptone.setOtherDetails("red dhal");
+    	ptone.getSuppliertable().add(st);
         ssn.save(st);
         ssn.save(pt);
+        ssn.save(ptone);
+       
         tr.commit(); 
+    	} catch(Exception e) {
+    		 e.printStackTrace();
+    	      // tr.rollback();
+    	}
     }
 }
