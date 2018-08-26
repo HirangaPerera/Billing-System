@@ -22,17 +22,17 @@ public class App
         
         SupplierTable st = new SupplierTable();
 			st.setSupplierID("CS02");
-			st.setSuppliarName("Hiranga Walisinghe");
+			st.setSuppliarName("Dulanjana Walisinghe");
 			st.setContactNumber("0719624398");
 			st.setCompanyName("kashyapa");
 			st.setCompanyAddress("kashyapa.Org");
 
 		ProductTable pt = new ProductTable();
 			pt.setProductId("CP03");
-			pt.setProduct("Watana");
+			pt.setProduct("Sugar");
 			pt.setAmount("10");
 			pt.setMeisure("kg");
-			pt.setOtherDetails("red dhal");
+			pt.setOtherDetails("red Sugar");
 			pt.setSuppliartable(st);
 
 		//ProductTable ptone = new ProductTable();
@@ -45,7 +45,7 @@ public class App
         ssn.save(st);
        
         ssn.save(pt);
-        //ssn.save(ptone);
+       // ssn.save(ptone);
         tr.commit(); 
      
        // st = null;
