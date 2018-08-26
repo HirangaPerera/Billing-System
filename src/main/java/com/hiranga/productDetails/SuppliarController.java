@@ -3,6 +3,7 @@ package com.hiranga.productDetails;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.hiranga.BillingSystem.ProductTable;
 import com.hiranga.BillingSystem.SupplierTable;
 
 import javafx.event.ActionEvent;
@@ -29,7 +30,7 @@ public class SuppliarController implements Initializable {
     	pt.setAmount("10");
     	pt.setMeisure("kg");
     	pt.setOtherDetails("red dhal");
-    	pt.getSuppliertable().add(st);
+    	
 	}
 
 }

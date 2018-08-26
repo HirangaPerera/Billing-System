@@ -1,7 +1,12 @@
 package com.hiranga.BillingSystem;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class SupplierTable {
@@ -11,7 +16,8 @@ private String SuppliarName;
 private String CompanyName;
 private String ContactNumber;
 private String CompanyAddress;
-
+@OneToMany(targetEntity = ProductTable.class, mappedBy="suppliartable", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
+private List <ProductTable> producttable;
 
 public String getContactNumber() {
 	return ContactNumber;
@@ -43,6 +49,13 @@ public String getCompanyAddress() {
 }
 public void setCompanyAddress(String companyAddress) {
 	CompanyAddress = companyAddress;
+}
+
+public List<ProductTable> getProducttable() {
+	return producttable;
+}
+public void setProducttable(List<ProductTable> producttable) {
+	this.producttable = producttable;
 }
 @Override
 public String toString() {
