@@ -7,38 +7,50 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="522.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiranga.BillingSystem.SupplierDetailsController">
+<AnchorPane prefHeight="665.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiranga.BillingSystem.SupplierDetailsController">
    <children>
-      <JFXTextField fx:id="sid" layoutX="173.0" layoutY="89.0" />
-      <JFXTextField fx:id="sname" layoutX="173.0" layoutY="135.0" />
-      <JFXTextField fx:id="scompany" layoutX="173.0" layoutY="180.0" />
-      <JFXTextField fx:id="scontact" layoutX="173.0" layoutY="232.0" />
-      <JFXTextField fx:id="saddress" layoutX="173.0" layoutY="283.0" />
-      <Label layoutX="51.0" layoutY="102.0" text="Supplier ID" />
-      <Label layoutX="51.0" layoutY="146.0" text="Supplier Name" />
-      <Label layoutX="51.0" layoutY="197.0" text="Company Name" />
-      <Label layoutX="51.0" layoutY="249.0" text="Contact Number" />
-      <Label layoutX="51.0" layoutY="300.0" text="Company Address" />
+      <JFXTextField fx:id="sid" layoutX="154.0" layoutY="82.0" />
+      <JFXTextField fx:id="sname" layoutX="154.0" layoutY="119.0" />
+      <JFXTextField fx:id="scompany" layoutX="154.0" layoutY="160.0" />
+      <JFXTextField fx:id="scontact" layoutX="154.0" layoutY="203.0" />
+      <JFXTextField fx:id="saddress" layoutX="154.0" layoutY="238.0" />
+      <Label layoutX="38.0" layoutY="94.0" text="Supplier ID" />
+      <Label layoutX="38.0" layoutY="131.0" text="Supplier Name" />
+      <Label layoutX="38.0" layoutY="172.0" text="Company Name" />
+      <Label layoutX="37.0" layoutY="215.0" text="Contact Number" />
+      <Label layoutX="33.0" layoutY="250.0" text="Company Address" />
       <Label layoutX="23.0" layoutY="36.0" text="Supplier">
          <font>
-            <Font size="24.0" />
+            <Font name="Book Antiqua" size="24.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="pid" layoutX="560.0" layoutY="91.0" />
-      <Label layoutX="443.0" layoutY="102.0" text="Product ID" />
-      <Label layoutX="451.0" layoutY="146.0" text="Product" />
-      <Label layoutX="451.0" layoutY="197.0" text="Amount" />
-      <Label layoutX="451.0" layoutY="241.0" text="Meisure" />
-      <Label layoutX="451.0" layoutY="287.0" text="OtherDetails" />
-      <JFXTextField fx:id="pproduct" layoutX="560.0" layoutY="134.0" />
-      <JFXTextField fx:id="pamount" layoutX="560.0" layoutY="185.0" />
-      <JFXTextField fx:id="pmeisure" layoutX="560.0" layoutY="230.0" />
-      <JFXTextField fx:id="potherdetails" layoutX="560.0" layoutY="278.0" />
-      <Label layoutX="410.0" layoutY="36.0" text="Product">
+      <JFXTextField fx:id="pid" layoutX="451.0" layoutY="98.0" />
+      <Label layoutX="372.0" layoutY="102.0" text="Product ID" />
+      <Label layoutX="372.0" layoutY="139.0" text="Product" />
+      <Label layoutX="372.0" layoutY="184.0" text="Amount" />
+      <Label layoutX="372.0" layoutY="223.0" text="Meisure" />
+      <Label layoutX="367.0" layoutY="258.0" text="OtherDetails" />
+      <JFXTextField fx:id="pproduct" layoutX="451.0" layoutY="134.0" />
+      <JFXTextField fx:id="pamount" layoutX="451.0" layoutY="172.0" />
+      <JFXTextField fx:id="pmeisure" layoutX="451.0" layoutY="206.0" />
+      <JFXTextField fx:id="potherdetails" layoutX="451.0" layoutY="246.0" />
+      <Label layoutX="359.0" layoutY="36.0" text="Product">
          <font>
-            <Font size="24.0" />
+            <Font name="Bell MT" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="367.0" layoutY="383.0" mnemonicParsing="false" onAction="#saveDetails" text="Button" />
+      <TableView layoutX="31.0" layoutY="423.0" prefHeight="200.0" prefWidth="690.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label layoutX="31.0" layoutY="308.0" text="Add Existing Supplier">
+         <font>
+            <Font name="Book Antiqua" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="354.0" text="Search by Name or ID" />
+      <JFXTextField layoutX="177.0" layoutY="350.0" />
    </children>
 </AnchorPane>
