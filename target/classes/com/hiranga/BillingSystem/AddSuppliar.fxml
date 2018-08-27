@@ -1,8 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="522.0" prefWidth="751.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiranga.BillingSystem.SupplierDetailsController">
+   <children>
+      <JFXTextField fx:id="sid" layoutX="173.0" layoutY="89.0" />
+      <JFXTextField fx:id="sname" layoutX="173.0" layoutY="135.0" />
+      <JFXTextField fx:id="scompany" layoutX="173.0" layoutY="180.0" />
+      <JFXTextField fx:id="scontact" layoutX="173.0" layoutY="232.0" />
+      <JFXTextField fx:id="saddress" layoutX="173.0" layoutY="283.0" />
+      <Label layoutX="51.0" layoutY="102.0" text="Supplier ID" />
+      <Label layoutX="51.0" layoutY="146.0" text="Supplier Name" />
+      <Label layoutX="51.0" layoutY="197.0" text="Company Name" />
+      <Label layoutX="51.0" layoutY="249.0" text="Contact Number" />
+      <Label layoutX="51.0" layoutY="300.0" text="Company Address" />
+      <Label layoutX="23.0" layoutY="36.0" text="Supplier">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="pid" layoutX="560.0" layoutY="91.0" />
+      <Label layoutX="443.0" layoutY="102.0" text="Product ID" />
+      <Label layoutX="451.0" layoutY="146.0" text="Product" />
+      <Label layoutX="451.0" layoutY="197.0" text="Amount" />
+      <Label layoutX="451.0" layoutY="241.0" text="Meisure" />
+      <Label layoutX="451.0" layoutY="287.0" text="OtherDetails" />
+      <JFXTextField fx:id="pproduct" layoutX="560.0" layoutY="134.0" />
+      <JFXTextField fx:id="pamount" layoutX="560.0" layoutY="185.0" />
+      <JFXTextField fx:id="pmeisure" layoutX="560.0" layoutY="230.0" />
+      <JFXTextField fx:id="potherdetails" layoutX="560.0" layoutY="278.0" />
+      <Label layoutX="410.0" layoutY="36.0" text="Product">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="367.0" layoutY="383.0" mnemonicParsing="false" onAction="#saveDetails" text="Button" />
+   </children>
 </AnchorPane>
-
