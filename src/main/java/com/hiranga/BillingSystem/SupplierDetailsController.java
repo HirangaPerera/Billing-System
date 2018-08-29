@@ -12,9 +12,14 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class SupplierDetailsController implements Initializable {
 	@FXML
@@ -47,6 +52,25 @@ public class SupplierDetailsController implements Initializable {
     @FXML
     private JFXTextField saddress;
 
+    @FXML
+    private TableColumn<SupplierTable, String> colsname;
+
+    @FXML
+    private TableColumn<SupplierTable, String> colsaddress;
+    
+    @FXML
+    private TableColumn<SupplierTable, String> colscontact;
+   
+    @FXML
+    private TableColumn<SupplierTable, String> colsid;
+    
+    @FXML
+    private TableColumn<SupplierTable, String> colscompany;
+    
+    @FXML
+    private TableView<SupplierTable> suplliertable;
+    
+    ObservableList<SupplierTable> suplist = FXCollections.observableArrayList();
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
@@ -67,5 +91,14 @@ public void saveDetails(ActionEvent e) {
 	st.setCompanyAddress("kashyapa.Org");
     ssn.save(st);
 	tr.commit();
+}
+public void showTable(ActionEvent e) {
+	colsid.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierID"));
+	colsname.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierName"));
+	colscompany.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyName"));
+	colsaddress.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyAddress"));
+	colscontact.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("ContactNumber"));
+	
+	
 }
 }

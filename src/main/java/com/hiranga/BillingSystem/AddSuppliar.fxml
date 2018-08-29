@@ -39,10 +39,13 @@
             <Font name="Bell MT" size="24.0" />
          </font>
       </Label>
-      <TableView layoutX="31.0" layoutY="423.0" prefHeight="200.0" prefWidth="690.0">
+      <TableView fx:id="suplliertable" layoutX="31.0" layoutY="423.0" prefHeight="200.0" prefWidth="690.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="colsid" prefWidth="75.0" text="Supplier ID" />
+          <TableColumn fx:id="colsname" prefWidth="184.0" text="Name" />
+            <TableColumn fx:id="colscompany" minWidth="0.0" prefWidth="143.0" text="Company" />
+            <TableColumn fx:id="colscontact" prefWidth="123.0" text="Contact Number" />
+            <TableColumn fx:id="colsaddress" prefWidth="164.0" text="Company Address" />
         </columns>
       </TableView>
       <Label layoutX="31.0" layoutY="308.0" text="Add Existing Supplier">
