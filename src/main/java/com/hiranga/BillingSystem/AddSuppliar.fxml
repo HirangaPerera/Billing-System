@@ -39,7 +39,7 @@
             <Font name="Bell MT" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="suplliertable" layoutX="31.0" layoutY="423.0" prefHeight="200.0" prefWidth="690.0">
+      <TableView fx:id="tablesup" layoutX="31.0" layoutY="423.0" prefHeight="200.0" prefWidth="690.0">
         <columns>
           <TableColumn fx:id="colsid" prefWidth="75.0" text="Supplier ID" />
           <TableColumn fx:id="colsname" prefWidth="184.0" text="Name" />
@@ -55,5 +55,6 @@
       </Label>
       <Label layoutX="33.0" layoutY="354.0" text="Search by Name or ID" />
       <JFXTextField layoutX="177.0" layoutY="350.0" />
+      <Button layoutX="529.0" layoutY="308.0" mnemonicParsing="false" onAction="#showTable" prefHeight="25.0" prefWidth="176.0" text="show" />
    </children>
 </AnchorPane>

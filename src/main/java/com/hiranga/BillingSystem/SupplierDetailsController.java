@@ -1,17 +1,17 @@
 package com.hiranga.BillingSystem;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
-
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,15 +68,16 @@ public class SupplierDetailsController implements Initializable {
     private TableColumn<SupplierTable, String> colscompany;
     
     @FXML
-    private TableView<SupplierTable> suplliertable;
+    private TableView<SupplierTable> tablesup;
     
-    ObservableList<SupplierTable> suplist = FXCollections.observableArrayList();
+	  ObservableList<SupplierTable> suplist = FXCollections.observableArrayList();	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
-		
+	
 	}
 public void saveDetails(ActionEvent e) {
 	String supid  = sid.getText();
+	
 	Configuration con = new Configuration().configure().addAnnotatedClass(SupplierTable.class).addAnnotatedClass(ProductTable.class);
     ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
     SessionFactory sf = con.buildSessionFactory(reg);
@@ -91,14 +92,30 @@ public void saveDetails(ActionEvent e) {
 	st.setCompanyAddress("kashyapa.Org");
     ssn.save(st);
 	tr.commit();
+	ssn.close();
 }
 public void showTable(ActionEvent e) {
+	//SupplierTable stt = new SupplierTable();
+	Configuration con = new Configuration().configure().addAnnotatedClass(SupplierTable.class).addAnnotatedClass(ProductTable.class);
+    ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
+    SessionFactory sf = con.buildSessionFactory(reg);
+    Session ssn = sf.openSession();
+    Transaction tr =  ssn.beginTransaction();
+	//stt = null;
+	 Query q =ssn.createQuery("from SupplierTable");
+     List<SupplierTable> st = q.list();
+     for(SupplierTable sp : st)
+     {
+   suplist.add(sp);
+     }
+     ssn.getTransaction().commit();
+	
 	colsid.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierID"));
 	colsname.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierName"));
 	colscompany.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyName"));
 	colsaddress.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyAddress"));
 	colscontact.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("ContactNumber"));
-	
+	tablesup.setItems(suplist);
 	
 }
 }
