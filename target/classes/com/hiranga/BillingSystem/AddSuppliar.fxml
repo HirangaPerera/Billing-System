@@ -56,5 +56,6 @@
       <Label layoutX="33.0" layoutY="354.0" text="Search by Name or ID" />
       <JFXTextField layoutX="177.0" layoutY="350.0" />
       <Button layoutX="529.0" layoutY="308.0" mnemonicParsing="false" onAction="#showTable" prefHeight="25.0" prefWidth="176.0" text="show" />
+      <Button layoutX="367.0" layoutY="308.0" mnemonicParsing="false" onAction="#saveDetails" prefHeight="25.0" prefWidth="97.0" text="Save" />
    </children>
 </AnchorPane>

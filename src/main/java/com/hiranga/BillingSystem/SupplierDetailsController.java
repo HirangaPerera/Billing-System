@@ -12,6 +12,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 import com.jfoenix.controls.JFXTextField;
+
+import hibernate.Configuaration.ConfigDeclaration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,45 +73,49 @@ public class SupplierDetailsController implements Initializable {
     private TableView<SupplierTable> tablesup;
     
 	  ObservableList<SupplierTable> suplist = FXCollections.observableArrayList();	
+	  
+	  ConfigDeclaration conf;
+	  public SupplierDetailsController(){
+	  conf = new ConfigDeclaration();
+	  conf.con = new Configuration().configure().addAnnotatedClass(SupplierTable.class).addAnnotatedClass(ProductTable.class);
+	  conf.createSessionFactory();
+	  }
+	  
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		
+		
+		
 	
 	}
 public void saveDetails(ActionEvent e) {
 	String supid  = sid.getText();
-	
-	Configuration con = new Configuration().configure().addAnnotatedClass(SupplierTable.class).addAnnotatedClass(ProductTable.class);
-    ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
-    SessionFactory sf = con.buildSessionFactory(reg);
-    Session ssn = sf.openSession();
-    Transaction tr =  ssn.beginTransaction();
+	conf.session = conf.sf.openSession();
+    Transaction tr =  conf.session.beginTransaction();
     
     SupplierTable st = new SupplierTable();
 	st.setSupplierID(supid);
-	st.setSuppliarName("Dulanjana Walisinghe");
-	st.setContactNumber("0719624398");
-	st.setCompanyName("kashyapa");
-	st.setCompanyAddress("kashyapa.Org");
-    ssn.save(st);
+	st.setSuppliarName("Hiru Walisinghe");
+	st.setContactNumber("0709624398");
+	st.setCompanyName("Gunaratne");
+	st.setCompanyAddress("Gunaratne.Org");
+    
+	conf.session.save(st);
 	tr.commit();
-	ssn.close();
+	conf.session.close();
 }
 public void showTable(ActionEvent e) {
-	//SupplierTable stt = new SupplierTable();
-	Configuration con = new Configuration().configure().addAnnotatedClass(SupplierTable.class).addAnnotatedClass(ProductTable.class);
-    ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
-    SessionFactory sf = con.buildSessionFactory(reg);
-    Session ssn = sf.openSession();
-    Transaction tr =  ssn.beginTransaction();
-	//stt = null;
-	 Query q =ssn.createQuery("from SupplierTable");
+
+	conf.session = conf.sf.openSession();
+    Transaction tr =  conf.session.beginTransaction();
+
+	 Query q =conf.session.createQuery("from SupplierTable");
      List<SupplierTable> st = q.list();
      for(SupplierTable sp : st)
      {
-   suplist.add(sp);
+    	 	suplist.add(sp);
      }
-     ssn.getTransaction().commit();
-	
+     conf.session.getTransaction().commit();
+	conf.session.close();
 	colsid.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierID"));
 	colsname.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierName"));
 	colscompany.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyName"));
