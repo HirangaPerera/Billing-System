@@ -3,8 +3,8 @@ package com.hiranga.productDetails;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.hiranga.BillingSystem.ProductTable;
-import com.hiranga.BillingSystem.SupplierTable;
+import com.hiranga.BillingSystem.SupplierForm.ProductTable;
+import com.hiranga.BillingSystem.SupplierForm.SupplierTable;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
