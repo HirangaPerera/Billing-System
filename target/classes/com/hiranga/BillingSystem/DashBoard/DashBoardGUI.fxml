@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="552.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="552.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hiranga.BillingSystem.DashBoard.DashBoardController">
    <children>
       <BorderPane layoutX="124.0" layoutY="158.0" prefHeight="632.0" prefWidth="978.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -79,7 +79,7 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="304.0" prefWidth="92.0">
                      <children>
-                        <JFXButton fx:id="btngetitem" layoutX="8.0" layoutY="10.0" prefHeight="72.0" prefWidth="68.0" style="-fx-background-color: #bc0000;" text="Item" textFill="#141314">
+                        <JFXButton fx:id="btngetitem" layoutX="8.0" layoutY="10.0" onAction="#getIten" prefHeight="72.0" prefWidth="68.0" style="-fx-background-color: #bc0000;" text="Item" textFill="#141314">
                            <font>
                               <Font name="Calibri" size="18.0" />
                            </font>

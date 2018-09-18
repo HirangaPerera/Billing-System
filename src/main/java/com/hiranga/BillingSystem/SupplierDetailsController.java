@@ -35,12 +35,25 @@ public class SupplierDetailsController implements Initializable {
 
     @FXML
     private JFXTextField sname;
+    
+    @FXML
+    private JFXTextField txtexissupid;
+   
+    @FXML
+    private JFXTextField txtsearchname;
+
 
     @FXML
     private JFXTextField pid;
 
     @FXML
     private JFXTextField pamount;
+    
+    @FXML
+    private JFXTextField txtbuying;
+    
+    @FXML
+    private JFXTextField txtselling;
 
     @FXML
     private JFXTextField potherdetails;
@@ -81,47 +94,133 @@ public class SupplierDetailsController implements Initializable {
 	  conf.createSessionFactory();
 	  }
 	  
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		
-		
-		
+	public void initialize(URL arg0, ResourceBundle arg1) {}
 	
-	}
-public void saveDetails(ActionEvent e) {
+	public void saveDetails(ActionEvent e) {
+	//Supplier
 	String supid  = sid.getText();
+	String supcon = scontact.getText();
+	String supcom = scompany.getText();
+	String supname = sname.getText();
+	String supaddress = saddress.getText();
+	
+	//Product
+	String prodid = pid.getText();
+	String prodmeisure = pmeisure.getText();
+	String prodproduct = pproduct.getText();
+	String prodother = potherdetails.getText();
+	String prodamount = pamount.getText();
+	String buy = txtbuying.getText();
+	String sell = txtselling.getText();
 	conf.session = conf.sf.openSession();
     Transaction tr =  conf.session.beginTransaction();
     
-    SupplierTable st = new SupplierTable();
-	st.setSupplierID(supid);
-	st.setSuppliarName("Hiru Walisinghe");
-	st.setContactNumber("0709624398");
-	st.setCompanyName("Gunaratne");
-	st.setCompanyAddress("Gunaratne.Org");
-    
+   
+	ProductTable pt = new ProductTable();
+	pt.setProductId(prodid);
+	pt.setProduct(prodproduct);
+	pt.setAmount(prodamount);
+	pt.setMeisure(prodmeisure);
+	pt.setBuingPrice(buy);
+	pt.setSelleingPrice(sell);
+	pt.setOtherDetails(prodother);
+	 
+	SupplierTable st = new SupplierTable();
+		st.setSupplierID(supid);
+		st.setSuppliarName(supname);
+		st.setContactNumber(supcon);
+		st.setCompanyName(supcom);
+		st.setCompanyAddress(supaddress);
+		
+		pt.setSuppliartable(st);
 	conf.session.save(st);
+	conf.session.save(pt);
 	tr.commit();
 	conf.session.close();
 }
-public void showTable(ActionEvent e) {
 
+public void supplierWithNewProduct(ActionEvent e) {
+	
+	//Product
+		String prodid = pid.getText();
+		String prodmeisure = pmeisure.getText();
+		String prodproduct = pproduct.getText();
+		String prodother = potherdetails.getText();
+		String prodamount = pamount.getText();
+		String buy = txtbuying.getText();
+		String sell = txtselling.getText();
+		conf.session = conf.sf.openSession();
+	    Transaction tr =  conf.session.beginTransaction();
+	    
+	   
+		ProductTable pt = new ProductTable();
+		pt.setProductId(prodid);
+		pt.setProduct(prodproduct);
+		pt.setAmount(prodamount);
+		pt.setMeisure(prodmeisure);
+		pt.setBuingPrice(buy);
+		pt.setSelleingPrice(sell);
+		pt.setOtherDetails(prodother);
+		String num = txtexissupid.getText();
+		SupplierTable stt;
+		stt = (SupplierTable)conf.session.get(SupplierTable.class, num);
+		pt.setSuppliartable(stt);
+		//conf.session.save(stt);
+		conf.session.save(pt);
+		tr.commit();
+		conf.session.close();
+}
+
+public void showTableByProduct(ActionEvent e) 
+{
+	String searchname = txtsearchname.getText();
+	
 	conf.session = conf.sf.openSession();
     Transaction tr =  conf.session.beginTransaction();
-
-	 Query q =conf.session.createQuery("from SupplierTable");
-     List<SupplierTable> st = q.list();
-     for(SupplierTable sp : st)
-     {
-    	 	suplist.add(sp);
-     }
-     conf.session.getTransaction().commit();
+    //HQL
+    Query q =conf.session.createQuery("from SupplierTable suptb where suptb.SupplierID in (select prtb.suppliartable from ProductTable prtb where prtb.Product Like '%"+searchname+"%')");
+    List<SupplierTable> st = q.list();
+     	for(SupplierTable sp : st)
+     		{
+    	 		suplist.add(sp);
+     		}
+    //Closing the session
+    conf.session.getTransaction().commit();
 	conf.session.close();
+	
+	//Populating the table
 	colsid.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierID"));
-	colsname.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierName"));
+	colsname.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SuppliarName"));
 	colscompany.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyName"));
 	colsaddress.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyAddress"));
 	colscontact.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("ContactNumber"));
 	tablesup.setItems(suplist);
 	
 }
+public void showTableByName(ActionEvent e)
+	{
+	String searchname = txtsearchname.getText();
+	
+	conf.session = conf.sf.openSession();
+    Transaction tr =  conf.session.beginTransaction();
+    //HQL
+    String HQL = "from SupplierTable as suptb where suptb.SuppliarName  Like '%"+searchname+"%'";
+    //Query q =conf.session.createQuery(HQL).list();
+    List<SupplierTable> st = conf.session.createQuery(HQL).list();
+     	for(SupplierTable sp : st)
+     		{
+    	 		suplist.add(sp);
+     		}
+    //Closing the session
+    conf.session.getTransaction().commit();
+	conf.session.close();
+	
+	//Populating the table
+	colsid.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SupplierID"));
+	colsname.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("SuppliarName"));
+	colscompany.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyName"));
+	colsaddress.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("CompanyAddress"));
+	colscontact.setCellValueFactory(new PropertyValueFactory<SupplierTable,String>("ContactNumber"));
+	tablesup.setItems(suplist);
+	}
 }

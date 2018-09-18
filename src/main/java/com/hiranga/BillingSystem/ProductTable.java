@@ -13,6 +13,8 @@ private String Product;
 private String Amount;
 private String Meisure;
 private String OtherDetails;
+private String BuingPrice;
+private String SelleingPrice;
 @ManyToOne
 @JoinColumn(name="Suppliar_ID")
 private SupplierTable suppliartable;
@@ -40,6 +42,19 @@ public String getMeisure() {
 }
 public void setMeisure(String meisure) {
 	Meisure = meisure;
+}
+
+public String getBuingPrice() {
+	return BuingPrice;
+}
+public void setBuingPrice(String buingPrice) {
+	BuingPrice = buingPrice;
+}
+public String getSelleingPrice() {
+	return SelleingPrice;
+}
+public void setSelleingPrice(String selleingPrice) {
+	SelleingPrice = selleingPrice;
 }
 public String getOtherDetails() {
 	return OtherDetails;
